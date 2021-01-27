@@ -31,8 +31,8 @@ class Server {
       urls();
       return this._router.getRouteByPath(path).view(req);
     }
-    urls();
     try {
+      urls();
       return this._router.getRouteByPath(path).view(req);
     } catch (error) {
       return Server.sendError(500, error.message);
