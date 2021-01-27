@@ -24,8 +24,8 @@ class Server {
   private static _router = Router();
 
   public static response(req: RequestGetInterface) {
-    const parameterRoute = SETTINGS.getProperty('parameterRoute');
-    const path = req.parameter[parameterRoute];
+    const argumentRoute = SETTINGS.getProperty('argumentRoute');
+    const path = req.parameter[argumentRoute];
     const debug = Number(ScriptProperties.getProperty('debug'));
     if (debug) {
       urls();
