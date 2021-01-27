@@ -1,0 +1,9 @@
+{
+    "projectName": "TemplateServer",
+    "gasId": "1HHYlxdd4wUf6uDm6Byfcaid05yDo98OQqUTIOFUdAoAIJQ3PrLeXTQib",
+    "gasIdDev": "1fXHiegM5FwZve1eJjF3IjhqzVCnbR-Lch1aJw0MkFUBikouEgbXKIm1n",
+    "ds_modules": [
+        "webapp"
+    ],
+    "projectPath": "/home/quattro/Documentos/typescript/TemplateServer"
+}
