@@ -133,8 +133,6 @@ class RouterSingleton {
     let Path = path;
     if (!path) Path = '';
     if (path === '/') Path = '';
-    Logger.log(path);
-    Logger.log(this._routes);
     for (const item of this._routes) {
       if (Array.isArray(item)) {
         for (const route of item[1]) {

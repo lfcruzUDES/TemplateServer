@@ -43,7 +43,8 @@ class Input {
     let input = `<input type="${this._type}" name="${this._name}"`;
     for (const attr in this._config.attrs) {
       if (object.hasOwnProperty()) {
-        // const element = object[];
+        const element = object[];
+        
       }
     }
   }

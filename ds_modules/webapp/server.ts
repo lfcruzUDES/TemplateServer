@@ -24,32 +24,32 @@ class Server {
   private static _router = Router();
 
   public static response(req: RequestGetInterface) {
-    const argumentRoute = SETTINGS.getProperty('argumentRoute');
-    const path = req.parameter[argumentRoute];
-    return this._router.getRouteByPath(path).view(req);
+    const parameterRoute = SETTINGS.getProperty('parameterRoute');
+    const path = req.parameter[parameterRoute];
+    const debug = Number(ScriptProperties.getProperty('debug'));
+    if (debug) {
+      urls();
+      return this._router.getRouteByPath(path).view(req);
+    }
+    urls();
+    try {
+      return this._router.getRouteByPath(path).view(req);
+    } catch (error) {
+      return Server.sendError(500, error.message);
+    }
   }
 
-  public static sendError(msg: string) {
-    return HtmlService.createHtmlOutput(msg);
+  public static sendError(code: number, error:string) {
+    return ContentService.createTextOutput(JSON.stringify({
+      status: code,
+      error,
+    })).setMimeType(ContentService.MimeType.JSON);
   }
 }
 
-// Serve get response.
 const doGet = (req: RequestGetInterface) => {
-  // try {
-     urls();
-  // } catch (error) {
-  //   return Server.sendError(error);
-  // }
-  // try {
-     req.method = 'GET';
-     return Server.response(req);
-  // } catch (error) {
-  //   return Server.sendError(error);
-  // }
+  req.method = 'GET';
+  return Server.response(req);
 };
 
-// Serve post response.
-const doPost = (req) => {
-  Logger.log(req);
-};
+const doPost = () => {};
