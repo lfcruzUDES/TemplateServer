@@ -1,4 +1,4 @@
-import View from '../ds_modules/webapp/views';
+import Http from '../ds_modules/webapp/http.js';
 
 /**
  * Check authorization.
@@ -28,7 +28,7 @@ const emailBobyBase = (request: { parameter: {} }) => {
     if (!parameters.hasOwnProperty('footer')) {
       parameters.footer = ScriptProperties.getProperty('footer');
     }
-    const html = View.render(
+    const html = Http.render(
       request,
       'TemplateServer/templates/emailBase.html',
       parameters,
@@ -38,12 +38,12 @@ const emailBobyBase = (request: { parameter: {} }) => {
       .replace(new RegExp('"', 'g'), '\'')
       .replace(new RegExp('\t', 'g'), '')
       .replace(new RegExp('\n', 'g'), '');
-    return View.JSONresponse({
+    return Http.JSONresponse({
       status: 200,
       data: content,
     });
   }
-  return View.JSONresponse({
+  return Http.JSONresponse({
     status: 404,
     error: 'Not allowed.',
   });
@@ -62,15 +62,15 @@ const setSettingsDefaultValues = (request: { parameter: {} }) => {
       if (parameters.hasOwnProperty('footer')) {
         ScriptProperties.setProperty('footer', parameters.footer);
       }
-      return View.JSONresponse({ status: 200 });
+      return Http.JSONresponse({ status: 200 });
     } catch (error) {
-      return View.JSONresponse({
+      return Http.JSONresponse({
         status: 500,
         error: error.message,
       });
     }
   } else {
-    return View.JSONresponse({
+    return Http.JSONresponse({
       status: 404,
       error: 'Not allowed.',
     });

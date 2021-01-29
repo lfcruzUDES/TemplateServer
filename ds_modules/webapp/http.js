@@ -4,7 +4,7 @@
 import SETTINGS from '../../Settings';
 import { RequestGetInterface } from './server';
 
-export default class View {
+export default class Http {
   public static render(request: {},
     template: string,
     context: {} = {}) {
